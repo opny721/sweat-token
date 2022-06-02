@@ -13,7 +13,7 @@ import {
 import { Box } from '@mui/system'
 import { useEffect, useState } from 'react'
 import { inviteMember } from '../../../api'
-import { MemberDto, MemberInviteDto } from '../../../api/openapi'
+import { MemberInviteDto } from '../../../api/openapi'
 import useAuth from '../../../context/AuthContext'
 import useDao from '../../../context/DaoContext'
 import useToast from '../../../context/ToastContext'

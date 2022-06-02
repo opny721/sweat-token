@@ -115,71 +115,76 @@ export const verifySignature = async (sig: NonceDto): Promise<JwtTokenDto> => {
 
 export const findProjects = async (query: ProjectQueryDto): Promise<ProjectDto[]> => {
   if (!query.daoId) throw new Error('daoId is required')
-  const res = await client.project.projectControllerFind(query.daoId, query)
+  const res = await client.project.daoProjectControllerFind(query.daoId, query)
   return res.data
 }
 
 export const loadProject = async (daoId: string, projectId: string): Promise<ProjectDto> => {
-  const res = await client.project.projectControllerRead(daoId, projectId)
+  const res = await client.project.daoProjectControllerRead(daoId, projectId)
   return res.data
 }
 
 export const createProject = async (p: CreateProjectDto): Promise<ProjectDto> => {
-  const res = await client.project.projectControllerCreate(p.daoId, p)
+  const res = await client.project.daoProjectControllerCreate(p.daoId, p)
   return res.data
 }
 
 export const findTasks = async (query: TaskQueryDto): Promise<TaskDto[]> => {
   if (!query.daoId) throw new Error('daoId is required')
-  const res = await client.task.taskControllerFind(query.daoId, query)
+  const res = await client.task.daoTaskControllerFind(query.daoId, query)
+  return res.data
+}
+
+export const findUserTasks = async (): Promise<TaskDto[]> => {
+  const res = await client.task.taskControllerFind({})
   return res.data
 }
 
 export const loadTask = async (daoId: string, taskId: string): Promise<TaskDto> => {
-  const res = await client.task.taskControllerRead(daoId, taskId)
+  const res = await client.task.daoTaskControllerRead(daoId, taskId)
   return res.data
 }
 
 export const createTask = async (p: CreateTaskDto): Promise<TaskDto> => {
-  const res = await client.task.taskControllerCreate(p.daoId, p)
+  const res = await client.task.daoTaskControllerCreate(p.daoId, p)
   return res.data
 }
 
 export const updateTask = async (p: TaskDto): Promise<TaskDto> => {
-  const res = await client.task.taskControllerUpdate(p.daoId, p.taskId, p)
+  const res = await client.task.daoTaskControllerUpdate(p.daoId, p.taskId, p)
   return res.data
 }
 
 export const deleteTask = async (daoId: string, taskId: string): Promise<void> => {
-  await client.task.taskControllerDelete(daoId, taskId)
+  await client.task.daoTaskControllerDelete(daoId, taskId)
 }
 
 export const listMembers = async (query: MemberQueryDto): Promise<ExtendedMemberDto[]> => {
   if (!query.daoId) throw new Error(`daoId is required`)
-  const res = await client.member.memberControllerList(query.daoId, query)
+  const res = await client.member.daoMemberControllerList(query.daoId, query)
   return res.data
 }
 
 export const loadMember = async (daoId: string, memberId: string): Promise<MemberDto> => {
-  const res = await client.member.memberControllerRead(daoId, memberId)
+  const res = await client.member.daoMemberControllerRead(daoId, memberId)
   return res.data
 }
 
 export const createMember = async (p: CreateMemberDto): Promise<MemberDto> => {
-  const res = await client.member.memberControllerCreate(p.daoId, p)
+  const res = await client.member.daoMemberControllerCreate(p.daoId, p)
   return res.data
 }
 
 export const updateMember = async (p: MemberDto): Promise<MemberDto> => {
-  const res = await client.member.memberControllerUpdate(p.daoId, p.memberId, p)
+  const res = await client.member.daoMemberControllerUpdate(p.daoId, p.memberId, p)
   return res.data
 }
 
 export const deleteMember = async (daoId: string, memberId: string): Promise<void> => {
-  await client.member.memberControllerDelete(daoId, memberId)
+  await client.member.daoMemberControllerDelete(daoId, memberId)
 }
 
 export const inviteMember = async (data: MemberInviteDto): Promise<MemberDto> => {
-  const res = await client.member.memberControllerInvite(data.daoId, data)
+  const res = await client.member.daoMemberControllerInvite(data.daoId, data)
   return res.data
 }

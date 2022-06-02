@@ -28,10 +28,8 @@ export default function TaskAssignDialog(props: TaskAssignDialogProps) {
 
   const [loading, setLoading] = useState(false)
   const [formValues, setFormValues] = useState({} as Record<string, any>)
-  const [page, setPage] = useState(0)
 
   const [options, setOptions] = useState<readonly ExtendedMemberDto[]>([])
-  const [open, setOpen] = React.useState(false)
   const [inputValue, setInputValue] = React.useState('')
 
   useEffect(() => {
@@ -48,10 +46,6 @@ export default function TaskAssignDialog(props: TaskAssignDialogProps) {
 
   const resetFormValues = () => setFormValues(() => ({}))
 
-  const onChange = (e: any) => {
-    updateFormValues(e.target.name, e.target.value)
-  }
-
   const findMembers = useCallback(
     (match?: string): Promise<ExtendedMemberDto[]> => {
       return listMembers({
@@ -65,10 +59,8 @@ export default function TaskAssignDialog(props: TaskAssignDialogProps) {
 
   useEffect(() => {
     if (!props.open) return
-    if (!open) {
-      setOptions([])
-    }
-  }, [open, props.open])
+    setOptions([])
+  }, [props.open])
 
   useEffect(() => {
     let active = true
@@ -101,7 +93,6 @@ export default function TaskAssignDialog(props: TaskAssignDialogProps) {
       .then(() => {
         showToast('Task assigned', 'success')
         resetFormValues()
-        setPage(0)
         props.onClose()
       })
       .catch((e: any) => {

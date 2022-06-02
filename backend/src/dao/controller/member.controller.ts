@@ -11,7 +11,7 @@ import { MemberService } from '../../member/member.service'
 @ApiBearerAuth()
 @ApiTags('member')
 @Controller('/dao/:daoId/member')
-export class MemberController {
+export class DaoMemberController {
   constructor(private memberService: MemberService) {}
 
   @Post('list')

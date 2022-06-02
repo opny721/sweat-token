@@ -133,7 +133,7 @@ export function PageLayout(props: PageLayoutProps) {
           <IconButton
             color="inherit"
             aria-label="connect"
-            onClick={() => (!account ? navigate(`/connect?redirect=${location.pathname}`) : setAccount(undefined))}
+            onClick={() => navigate(!account ? `/connect?redirect=${location.pathname}` : `/dashboard`)}
           >
             <Stack spacing={1} direction="row">
               <AccountCircleIcon />

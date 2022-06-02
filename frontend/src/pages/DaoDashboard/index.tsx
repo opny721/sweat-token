@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import useDao from '../../context/DaoContext'
 import useToast from '../../context/ToastContext'
 
-export default function Dashboard() {
+export default function DaoDashboard() {
   const { loading, dao } = useDao()
   const navigate = useNavigate()
   const { showToast } = useToast()

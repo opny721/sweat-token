@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Connect } from './pages/Connect'
 import Dao from './pages/Dao'
-import Dashboard from './pages/Dashboard'
+import DaoDashboard from './pages/DaoDashboard'
 import Equity from './pages/Equity'
 import Landing from './pages/Landing'
 import Legal from './pages/Legal'
@@ -16,6 +16,7 @@ import ProjectView from './pages/Projects/pages/ProjectView'
 import ProjectDashboard from './pages/Projects/pages/ProjectDashboard'
 import Taxes from './pages/Taxes'
 import DaoCreate from './pages/DaoCreate'
+import UserDashboard from './pages/UserDashboard'
 
 const mdTheme = createTheme()
 
@@ -24,11 +25,12 @@ function App() {
     <ThemeProvider theme={mdTheme}>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/connect" element={<Connect />} />
         <Route path="dao/create" element={<DaoCreate />} />
         <Route path="dao/:daoId" element={<Dao />}>
-          <Route index element={<Dashboard />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<DaoDashboard />} />
+          <Route path="dashboard" element={<DaoDashboard />} />
           <Route path="legal" element={<Legal />} />
           <Route path="taxes" element={<Taxes />} />
           <Route path="equity" element={<Equity />} />

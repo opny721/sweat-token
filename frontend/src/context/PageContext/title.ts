@@ -1,18 +1,17 @@
+import { PAGE_TITLE_DEFAULT } from '../../constants'
 import { menu } from './menu'
 
-const DAO_DEFAULT_TITLE = 'dashboard'
-
-const daoPageTitle = (daoId?: string, subpath?: string, subpathId?: string, ...args: string[]): string => {
-  if (!daoId) return DAO_DEFAULT_TITLE
+const daoPageTitle = (daoId?: string, subpath?: string, subpathId?: string, ...args: string[]): string | undefined => {
+  if (!daoId) return PAGE_TITLE_DEFAULT
   if (subpath) {
     switch (subpath) {
       case 'projects':
         return 'Projects'
       default:
-        return DAO_DEFAULT_TITLE
+        return undefined
     }
   }
-  return DAO_DEFAULT_TITLE
+  return undefined
 }
 
 export const getTitleFromPath = (pathname: string): string => {
@@ -21,8 +20,13 @@ export const getTitleFromPath = (pathname: string): string => {
   switch (group) {
     case 'dao':
       const matches = menu.filter(({ link }) => link === subpath)
-      return matches.length ? matches[0].label : daoPageTitle(...parts.slice(1))
+
+      if (matches && matches.length) {
+        return matches[0].label
+      }
+
+      return daoPageTitle(...parts.slice(1)) || PAGE_TITLE_DEFAULT
     default:
-      return 'Sweat Token'
+      return PAGE_TITLE_DEFAULT
   }
 }

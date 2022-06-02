@@ -11,3 +11,5 @@ export const OWNER: Owner = {
   docsUrl: 'https://www.notion.so/SporosDAO-963e89779ebb45c5b717c478ef739627',
   helpUrl: 'https://discord.gg/jHnx3AC2'
 }
+
+export const PAGE_TITLE_DEFAULT = 'Sweat Token'

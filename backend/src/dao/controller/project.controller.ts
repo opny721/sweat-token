@@ -9,7 +9,7 @@ import { ProjectService } from '../../project/project.service'
 @ApiTags('project')
 @Controller('/dao/:daoId/project')
 @UseGuards(ProjectGuard)
-export class ProjectController {
+export class DaoProjectController {
   constructor(private projectService: ProjectService) {}
 
   @Post('find')

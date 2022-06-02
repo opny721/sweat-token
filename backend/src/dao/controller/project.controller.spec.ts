@@ -1,18 +1,18 @@
 import { RuntimeModule } from '@app/runtime'
 import { Test, TestingModule } from '@nestjs/testing'
 import { ProjectModule } from '../../project/project.module'
-import { ProjectController } from './project.controller'
+import { DaoProjectController } from './project.controller'
 
-describe('ProjectController', () => {
-  let controller: ProjectController
+describe('DaoProjectController', () => {
+  let controller: DaoProjectController
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [RuntimeModule, ProjectModule],
-      controllers: [ProjectController],
+      controllers: [DaoProjectController],
     }).compile()
 
-    controller = module.get(ProjectController)
+    controller = module.get(DaoProjectController)
   })
 
   it('should be defined', () => {

@@ -8,7 +8,7 @@ import { DaoAuth } from '../dao.auth.decorator'
 @ApiBearerAuth()
 @ApiTags('task')
 @Controller('/dao/:daoId/task')
-export class TaskController {
+export class DaoTaskController {
   constructor(private taskService: TaskService) {}
 
   @Post('find')

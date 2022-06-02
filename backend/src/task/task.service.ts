@@ -76,6 +76,7 @@ export class TaskService {
     const q: FilterQuery<TaskDocument> = {}
 
     if (query.ownerId) q.ownerId = query.ownerId
+    if (query.contributorId) q.contributorId = query.contributorId
     if (query.daoId) q.daoId = query.daoId
 
     const dateField = query.dateField || 'created'

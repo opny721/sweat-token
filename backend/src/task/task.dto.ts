@@ -35,6 +35,9 @@ export class TaskQueryDto {
   ownerId?: string
   @IsUUID()
   @IsOptional()
+  contributorId?: string
+  @IsUUID()
+  @IsOptional()
   projectId?: string
   @IsOptional()
   dateField?: string = 'created'
